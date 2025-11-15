@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import './app.css';
+
+const QueryString = {
+  TRANSACTION_ID: 't',
+};
 
 function App() {
+  const query = new URLSearchParams(window.location.search);
+  const transId = query.get(QueryString.TRANSACTION_ID);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <iframe
+      className='iframe-download-page'
+      src={`${process.env.REACT_APP_FUN_DOWNLOAD_URL}${transId}`}
+      title='PhotoBooth Download Page'
+    />
   );
 }
 
